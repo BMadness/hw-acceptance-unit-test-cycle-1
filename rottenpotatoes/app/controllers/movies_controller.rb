@@ -1,7 +1,7 @@
 class MoviesController < ApplicationController
   
   def movie_params
-    params.require(:movie).permit(:title, :rating, :description, :release_date)
+    params.require(:movie).permit(:title, :director,:rating, :description, :release_date)
   end
 
   def show
@@ -60,5 +60,12 @@ class MoviesController < ApplicationController
     flash[:notice] = "Movie '#{@movie.title}' deleted."
     redirect_to movies_path
   end
+
+  def similar
+    @movie = Movie.find(params[:movie_id])
+    @similar_movies = Movie
+                        .where('id != ? AND director = ?', params[:movie_id], @movie.director)
+  end
+
 
 end

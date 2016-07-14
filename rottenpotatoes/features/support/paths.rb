@@ -10,11 +10,14 @@ module NavigationHelpers
   #
   # step definition in web_steps.rb
   #
+
   def path_to(page_name)
     case page_name
 
-    when /^the home\s?page$/ then '/'
+    when /^the home\s?page$/ then '/movies'
 
+    when /^the RottenPotatoes home page$/ then '/movies'
+     
     when /^the edit\s?page for "(.*)"$/
       movie = Movie.where(title: $1).take
       edit_movie_path(movie.id)

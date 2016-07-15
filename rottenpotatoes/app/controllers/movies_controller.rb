@@ -69,7 +69,7 @@ class MoviesController < ApplicationController
 
     if(@similar_movies.empty?)
       flash[:warning] = ("'#{movie.title}' has no director info")
-      redirect_to '/'
+      redirect_to '/movies'
     end
   end
 

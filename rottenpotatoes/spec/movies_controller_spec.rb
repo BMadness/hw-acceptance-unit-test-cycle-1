@@ -3,8 +3,8 @@ require 'rails_helper'
 RSpec.describe MoviesController, type: :controller do
 
   describe "MoviesController" do
-    
-
+    render_views
+   
     context "Showing a Movie" do
       before :each do
         Movie.create(title: 'Star Wars', rating: 'PG', director: 'George Lucas', release_date: Date.new(1977,5,25))
@@ -136,7 +136,7 @@ RSpec.describe MoviesController, type: :controller do
         movie = @movies.where(title: 'Blade Runner').take
         get :similar, movie_id: movie.id
 
-        expect(response).to redirect_to('/')
+        expect(response).to redirect_to('/movies')
         expect(flash[:warning]).to eq("'#{movie.title}' has no director info")
       end
 

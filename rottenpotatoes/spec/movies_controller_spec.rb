@@ -3,8 +3,8 @@ require 'rails_helper'
 RSpec.describe MoviesController, type: :controller do
 
   describe "MoviesController" do
-    
-
+    render_views
+   
     context "Showing a Movie" do
       before :each do
         Movie.create(title: 'Star Wars', rating: 'PG', director: 'George Lucas', release_date: Date.new(1977,5,25))
@@ -28,11 +28,13 @@ RSpec.describe MoviesController, type: :controller do
 
       it "Should be create a movie" do
 
+        movies_count = Movie.all.count
         movie = {title: 'Star Wars', director: 'George Lucas',rating: 'PG', description: 'Great Movie', release_date: Date.new(1977,5,25)}
         post :create, movie: movie
       
         expect(flash[:notice]).to eq("#{movie[:title]} was successfully created.")
         expect(response).to redirect_to(movies_path)
+        expect(@movies.count).to eq(movies_count + 1)
       end
 
     end
@@ -79,11 +81,13 @@ RSpec.describe MoviesController, type: :controller do
       end
 
       it "Should be destroy a movie" do
+        movies_count = Movie.all.count
         movie = @movies.take
         delete :destroy, id: movie.id 
       
         expect(flash[:notice]).to eq("Movie '#{movie.title}' deleted.")
         expect(response).to redirect_to(movies_path)
+        expect(@movies.count).to eq(movies_count -1)
       end
 
     end
@@ -124,7 +128,7 @@ RSpec.describe MoviesController, type: :controller do
       it "Should be redirect to the home page with an error when can't find similar movies" do
         movie = @movies.where(title: 'Blade Runner').take
         get :similar, movie_id: movie.id
-
+        expect(response).to redirect_to('/movies')
         expect(flash[:warning]).to eq("'#{movie.title}' has no director info")
       end
 

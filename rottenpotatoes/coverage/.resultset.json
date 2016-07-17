@@ -66,12 +66,12 @@
         null,
         null,
         1,
-        2,
+        1,
         null,
-        2,
+        1,
         null,
         null,
-        2,
+        1,
         1,
         1,
         null,
@@ -91,21 +91,9 @@
         3,
         null,
         null
-      ],
-      "/Users/gonzaloignaciopincheiraarancibia/Desktop/rubyApps/brunetti/edx_ruby/hw-acceptance-unit-test-cycle/rottenpotatoes/app/helpers/application_helper.rb": [
-        0,
-        0
-      ],
-      "/Users/gonzaloignaciopincheiraarancibia/Desktop/rubyApps/brunetti/edx_ruby/hw-acceptance-unit-test-cycle/rottenpotatoes/app/helpers/movies_helper.rb": [
-        0,
-        0,
-        0,
-        0,
-        0,
-        0
       ]
     },
-    "timestamp": 1468340295
+    "timestamp": 1468735058
   },
   "Cucumber Features": {
     "coverage": {
@@ -199,20 +187,8 @@
         1,
         1,
         null
-      ],
-      "/Users/gonzaloignaciopincheiraarancibia/Desktop/rubyApps/brunetti/edx_ruby/hw-acceptance-unit-test-cycle/rottenpotatoes/app/helpers/application_helper.rb": [
-        1,
-        null
-      ],
-      "/Users/gonzaloignaciopincheiraarancibia/Desktop/rubyApps/brunetti/edx_ruby/hw-acceptance-unit-test-cycle/rottenpotatoes/app/helpers/movies_helper.rb": [
-        1,
-        null,
-        1,
-        0,
-        null,
-        null
       ]
     },
-    "timestamp": 1468330130
+    "timestamp": 1468735395
   }
 }

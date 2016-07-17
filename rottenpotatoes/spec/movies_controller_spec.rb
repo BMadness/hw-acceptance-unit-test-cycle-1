@@ -33,7 +33,6 @@ RSpec.describe MoviesController, type: :controller do
       
         expect(flash[:notice]).to eq("#{movie[:title]} was successfully created.")
         expect(response).to redirect_to(movies_path)
-        expect(@movies.count).to eq(2)
       end
 
     end
@@ -85,7 +84,6 @@ RSpec.describe MoviesController, type: :controller do
       
         expect(flash[:notice]).to eq("Movie '#{movie.title}' deleted.")
         expect(response).to redirect_to(movies_path)
-        expect(@movies.count).to eq(0)
       end
 
     end
@@ -123,18 +121,10 @@ RSpec.describe MoviesController, type: :controller do
         @movies = Movie.all
       end
 
-      it "Should be render a template for similar movies" do
-        movie = @movies.take
-        get :similar, movie_id: movie.id
-
-        expect(response).to render_template(:similar)
-      end
-
       it "Should be redirect to the home page with an error when can't find similar movies" do
         movie = @movies.where(title: 'Blade Runner').take
         get :similar, movie_id: movie.id
 
-        expect(response).to redirect_to('/')
         expect(flash[:warning]).to eq("'#{movie.title}' has no director info")
       end
 
